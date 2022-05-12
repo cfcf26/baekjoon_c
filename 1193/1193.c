@@ -1,44 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2293.c                                             :+:      :+:    :+:   */
+/*   1193.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekwak <ekwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 14:23:35 by ekwak             #+#    #+#             */
-/*   Updated: 2022/05/11 14:50:49 by ekwak            ###   ########.fr       */
+/*   Created: 2022/05/12 14:11:03 by ekwak             #+#    #+#             */
+/*   Updated: 2022/05/12 23:46:09 by ekwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
+#include <stdio.h>
 
-int	main(void)
+int find_line(int i)
 {
-	int i = 2;
-	int j = 5;
-	int n = 0;
-	int count = 2;
+	int n = 1;
 
-	scanf("%d", &n);
-	if (n <= 0)
+	while(1)
 	{
-		return (0);
+		if (i <= 0)
+			return (0);
+		if (n * (n - 1) / 2 < i && i <= n * (n + 1) / 2)
+			return (n);
+		n++;
 	}
-	if (n == 1)
-	{
-		printf("%d", 1);
-		return (0);
-	}
-	while (1)
-	{
-		if (i <= n && i + j >= n)
-		{
-			printf("%d", count);
-			break ;
-		}
-		i = i + j + 1;
-		j += 6;
-		count++;
-	}
+	return (0);
 }
 
+int main(void)
+{
+	int i;
+	int n;
+	int o;
+
+	scanf("%d", &i);
+	if (i == 1)
+		printf("1/1");
+	n = find_line(i);
+	o = (n * (n + 1) / 2) - i;
+	if (n % 2 != 0)
+	{
+		printf("%d/%d", o + 1, n - o);
+	}
+	else
+	{
+		printf("%d/%d", n - o, o + 1);
+	}
+}
